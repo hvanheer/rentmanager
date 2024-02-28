@@ -108,45 +108,43 @@ public class main {
                     Vehicule vehicleToDelete = vehicleService.findById(vehicleIDint);
 
                     int nbDeletedVehicles = vehicleService.delete(vehicleToDelete);
-                    System.out.println(nbDeletedVehicles + "vehicle(s) deleted.");
+                    System.out.println(nbDeletedVehicles + " vehicle(s) deleted.");
                     break;
 
                 case "7":
 
-                    System.out.println("Client ID: ");
-                    String resaClientIdString = scanner.next();
-                    int resaClientIdInt = IOUtils.readInt(resaClientIdString);
+                    int resaClientIdInt = IOUtils.readInt("Client ID: ");
+                    Client newClient = clientService.findById(resaClientIdInt);
 
-                    System.out.println("Vehicle ID: ");
-                    String resaVehicleIdString = scanner.next();
-                    int resaVehicleIdInt = IOUtils.readInt(resaVehicleIdString);
+                    int resaVehicleIdInt = IOUtils.readInt("Vehicle ID: ");
+                    Vehicule newVehicle1 = vehicleService.findById(resaVehicleIdInt);
 
+                    LocalDate reservationStartDateLD = IOUtils.readDate("Reservation Start Date: ", true);
 
-                    System.out.println("Reservation Start Date: ");
-                    String reservationStartDateString = scanner.next();
-                    LocalDate reservationStartDateLD = IOUtils.readDate(reservationStartDateString, true);
+                    LocalDate reservationEndDateLD = IOUtils.readDate("Reservation End Date: ", true);
 
-                    System.out.println("Reservation End Date: ");
-                    String reservationEndDateString = scanner.next();
-                    LocalDate reservationEndDateLD = IOUtils.readDate(reservationEndDateString, true);
+                    Reservation newReservation = new Reservation(newClient, newVehicle1, reservationStartDateLD, reservationEndDateLD, 0);
 
-                    int newReservationID = 0;
+                    int newReservationID = reservationService.create(newReservation);
 
-                    Reservation newReservation = new Reservation(resaClientIdInt, resaVehicleIdInt, reservationStartDateLD, reservationEndDateLD, newReservationID);
+                    System.out.println("Id de la nouvelle reservation: " + newReservationID);
 
-                    reservationService.create(newReservation);
                     break;
 
                 case "8":
-                    reservationService.findAll();
+                    try{
+                        System.out.println(reservationService.findAll());
+                    } catch (ServiceException e) {
+                        System.out.println("service exception "+e.getMessage());
+                    }
                     break;
 
-                case "9":
-                    System.out.println("Reservation ID: ");
-                    String reservationIDString = scanner.next();
-                    int reservationIDint = IOUtils.readInt(reservationIDString);
 
-                    reservationService.delete(reservationIDint);
+                case "9":
+                    int reservationIDint = IOUtils.readInt("Reservation ID: ");
+
+                    int nbDeletedReservations = reservationService.delete(reservationIDint);
+                    System.out.println(nbDeletedReservations + " reservation(s) deleted.");
                     break;
 
 

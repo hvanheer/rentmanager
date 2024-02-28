@@ -9,16 +9,16 @@ public class Reservation {
         return client_id;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setClient(Client client) {
+        this.client_id = client.getClient_id();
     }
 
     public int getVehicule_id() {
         return vehicule_id;
     }
 
-    public void setVehicule_id(int vehicule_id) {
-        this.vehicule_id = vehicule_id;
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule_id = vehicule.getVehicule_id();
     }
 
     public LocalDate getDebut() {
@@ -53,9 +53,9 @@ public class Reservation {
 
     private int reservation_id;
 
-    public Reservation(int client_id, int vehicule_id, LocalDate debut, LocalDate fin, int reservation_id) {
-        this.client_id = client_id;
-        this.vehicule_id = vehicule_id;
+    public Reservation(Client client, Vehicule vehicule, LocalDate debut, LocalDate fin, int reservation_id) {
+        this.client_id = client.getClient_id();
+        this.vehicule_id = vehicule.getVehicule_id();
         this.debut = debut;
         this.fin = fin;
         this.reservation_id = reservation_id;

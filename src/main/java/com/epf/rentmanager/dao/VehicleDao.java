@@ -82,6 +82,7 @@ public class VehicleDao {
 			Vehicule vehicule = new Vehicule(resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(1) );
 			return vehicule;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new DaoException();
 		}
 

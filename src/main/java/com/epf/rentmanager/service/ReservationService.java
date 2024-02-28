@@ -25,7 +25,7 @@ public class ReservationService {
         return instance;
     }
 
-    public long create(Reservation reservation) throws ServiceException {
+    public int create(Reservation reservation) throws ServiceException {
         // TODO: créer une reservation
         try {
             return reservationDao.create(reservation);
@@ -34,7 +34,7 @@ public class ReservationService {
         }
     }
 
-    public long delete(int reservationId) throws ServiceException {
+    public int delete(int reservationId) throws ServiceException {
         // TODO: delete une reservation
         try {
             return reservationDao.delete(reservationId);
@@ -43,29 +43,30 @@ public class ReservationService {
         }
     }
 
-    public List<Reservation> findResaByClientId(int id) throws ServiceException {
-        // TODO: récupérer une liste de reservation par l'id du client
-        try {
-            return reservationDao.findResaByClientId(id);
-        } catch (DaoException e) {
-            throw new ServiceException();
-        }
-    }
-
-    public List<Reservation> findResaByVehicleId(int id) throws ServiceException {
-        // TODO: récupérer une liste de reservation par l'id du vehicule
-        try {
-            return reservationDao.findResaByVehicleId(id);
-        } catch (DaoException e) {
-            throw new ServiceException();
-        }
-    }
+//    public List<Reservation> findResaByClientId(int id) throws ServiceException {
+//        // TODO: récupérer une liste de reservation par l'id du client
+//        try {
+//            return reservationDao.findResaByClientId(id);
+//        } catch (DaoException e) {
+//            throw new ServiceException();
+//        }
+//    }
+//
+//    public List<Reservation> findResaByVehicleId(int id) throws ServiceException {
+//        // TODO: récupérer une liste de reservation par l'id du vehicule
+//        try {
+//            return reservationDao.findResaByVehicleId(id);
+//        } catch (DaoException e) {
+//            throw new ServiceException();
+//        }
+//    }
 
     public List<Reservation> findAll() throws ServiceException {
         // TODO: récupérer une liste de toutes les reservations
         try {
             return reservationDao.findAll();
         } catch (DaoException e) {
+            e.printStackTrace();
             throw new ServiceException();
         }
     }
