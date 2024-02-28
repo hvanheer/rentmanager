@@ -34,7 +34,7 @@ public class main {
 
 
         while (!userInput.equals("12")) {
-            System.out.print("Please enter a value: 1 - Create a Client; 2 - Find all Clients; 3 - Create a Vehicle; 4 - Find all Vehicles; 5 - Delete a Client; 6 - Delete a Vehicle; 7 - Create a Reservation; 8 - Find all Reservations; 9 - Delete a Reservation; 12 - Quit");
+            System.out.print("Please enter a value: 1 - Create a Client; 2 - Find all Clients; 3 - Create a Vehicle; 4 - Find all Vehicles; 5 - Delete a Client; 6 - Delete a Vehicle; 7 - Create a Reservation; 8 - Find all Reservations; 9 - Delete a Reservation; 10 - Find Resa by Client ID; 11 - Find Resa by Vehicle ID; 12 - Quit");
             userInput = scanner.next();
             System.out.println("You entered: " + userInput);
             switch (userInput) {
@@ -94,7 +94,6 @@ public class main {
                 case "5":
 
                     int clientIDint = IOUtils.readInt("Client ID: ");
-                    System.out.println(clientIDint);
 
                     Client clientToDelete = clientService.findById(clientIDint);
 
@@ -147,6 +146,23 @@ public class main {
                     System.out.println(nbDeletedReservations + " reservation(s) deleted.");
                     break;
 
+                case "10":
+                    int clientIdForResa = IOUtils.readInt("Client ID for reservation: ");
+                    try{
+                        System.out.println(reservationService.findResaByClientId(clientIdForResa));
+                    } catch (ServiceException e) {
+                        System.out.println("service exception "+e.getMessage());
+                    }
+                    break;
+
+                case "11":
+                    int vehicleIdForResa = IOUtils.readInt("Vehicle ID for reservation: ");
+                    try{
+                        System.out.println(reservationService.findResaByClientId(vehicleIdForResa));
+                    } catch (ServiceException e) {
+                        System.out.println("service exception "+e.getMessage());
+                    }
+                    break;
 
 
                 case "12":

@@ -43,23 +43,23 @@ public class ReservationService {
         }
     }
 
-//    public List<Reservation> findResaByClientId(int id) throws ServiceException {
-//        // TODO: récupérer une liste de reservation par l'id du client
-//        try {
-//            return reservationDao.findResaByClientId(id);
-//        } catch (DaoException e) {
-//            throw new ServiceException();
-//        }
-//    }
-//
-//    public List<Reservation> findResaByVehicleId(int id) throws ServiceException {
-//        // TODO: récupérer une liste de reservation par l'id du vehicule
-//        try {
-//            return reservationDao.findResaByVehicleId(id);
-//        } catch (DaoException e) {
-//            throw new ServiceException();
-//        }
-//    }
+    public List<Reservation> findResaByClientId(int id) throws ServiceException {
+        // TODO: récupérer une liste de reservation par l'id du client
+        try {
+            return reservationDao.findResaByClientId(id);
+        } catch (DaoException e) {
+            throw new ServiceException();
+        }
+    }
+
+    public List<Reservation> findResaByVehicleId(int id) throws ServiceException {
+        // TODO: récupérer une liste de reservation par l'id du vehicule
+        try {
+            return reservationDao.findResaByVehicleId(id);
+        } catch (DaoException e) {
+            throw new ServiceException();
+        }
+    }
 
     public List<Reservation> findAll() throws ServiceException {
         // TODO: récupérer une liste de toutes les reservations
