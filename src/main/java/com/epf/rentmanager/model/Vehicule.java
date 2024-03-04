@@ -32,7 +32,15 @@ public class Vehicule {
     public void setNb_places(int nb_places) {
         this.nb_places = nb_places;
     }
+    private String modele;
 
+    public String getModele() {
+        return modele;
+    }
+
+    public void setModele(String modele) {
+        this.modele = modele;
+    }
 
     private int nb_places;
 
@@ -41,13 +49,14 @@ public class Vehicule {
         return "Vehicule{" +
                 "vehicule_id=" + vehicule_id +
                 ", constructeur='" + constructeur + '\'' +
+                ", modele='" + modele + '\'' +
                 ", nb_places=" + nb_places +
                 '}';
     }
 
-    public Vehicule(String constructeur, int nb_places, int vehicule_id) {
+    public Vehicule(String constructeur, int nb_places, int vehicule_id, String modele) {
         this.constructeur = constructeur;
-
+        this.modele = modele;
         this.nb_places = nb_places;
         this.vehicule_id = vehicule_id;
     }

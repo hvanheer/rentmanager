@@ -75,9 +75,11 @@ public class main {
 
                     int nbPlacesInt = IOUtils.readInt("Number of seats: ");
 
+                    String modele = IOUtils.readString("Vehicle modele: ", true);
+
                     int newVehicleID = 0;
 
-                    Vehicule newVehicle = new Vehicule(constructeur, nbPlacesInt, newVehicleID);
+                    Vehicule newVehicle = new Vehicule(constructeur, nbPlacesInt, newVehicleID, modele);
 
                     int newIdVehicle = vehicleService.create(newVehicle);
                     System.out.println("Id du nouveau vehicule: " + newIdVehicle);

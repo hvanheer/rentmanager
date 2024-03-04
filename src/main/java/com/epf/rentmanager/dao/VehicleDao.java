@@ -28,16 +28,17 @@ public class VehicleDao {
 		return instance;
 	}
 
-	private static final String CREATE_VEHICLE_QUERY = "INSERT INTO Vehicle(constructeur, nb_places) VALUES(?, ?);";
+	private static final String CREATE_VEHICLE_QUERY = "INSERT INTO Vehicle(constructeur, nb_places, modele) VALUES(?, ?, ?);";
 	private static final String DELETE_VEHICLE_QUERY = "DELETE FROM Vehicle WHERE id=?;";
-	private static final String FIND_VEHICLE_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle WHERE id=?;";
-	private static final String FIND_VEHICLES_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle;";
+	private static final String FIND_VEHICLE_QUERY = "SELECT id, constructeur, nb_places, modele FROM Vehicle WHERE id=?;";
+	private static final String FIND_VEHICLES_QUERY = "SELECT id, constructeur, nb_places, modele FROM Vehicle;";
 
 	public int create(Vehicule vehicule) throws DaoException {
 		try(Connection connection = ConnectionManager.getConnection(); PreparedStatement ps = connection.prepareStatement(CREATE_VEHICLE_QUERY, Statement.RETURN_GENERATED_KEYS)) {
 
 			ps.setString(1, vehicule.getConstructeur());
 			ps.setInt(2, vehicule.getNb_places());
+			ps.setString(3, vehicule.getModele());
 			ps.executeUpdate();
 			ResultSet resultSet = ps.getGeneratedKeys();
 
@@ -79,7 +80,7 @@ public class VehicleDao {
 			if (!resultSet.next()) {
 				throw new DaoException();
 			}
-			Vehicule vehicule = new Vehicule(resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(1) );
+			Vehicule vehicule = new Vehicule(resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(1), resultSet.getString(4));
 			return vehicule;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -100,7 +101,7 @@ public class VehicleDao {
 			List<Vehicule> list = new ArrayList<Vehicule>();
 
 			while (resultSet.next()){
-				Vehicule vehicule = new Vehicule(resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(1));
+				Vehicule vehicule = new Vehicule(resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(1), resultSet.getString(4));
 				list.add(vehicule);
 			}
 			ps.close();
