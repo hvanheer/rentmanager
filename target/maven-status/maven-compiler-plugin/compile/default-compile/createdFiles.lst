@@ -4,6 +4,7 @@ com/epf/rentmanager/exception/DaoException.class
 com/epf/rentmanager/model/Client.class
 com/epf/rentmanager/dao/ReservationDao.class
 com/epf/rentmanager/model/Vehicule.class
+com/epf/rentmanager/configuration/AppConfiguration.class
 com/epf/rentmanager/servlet/HomeServlet.class
 com/epf/rentmanager/persistence/ConnectionManager.class
 com/epf/rentmanager/service/VehicleService.class

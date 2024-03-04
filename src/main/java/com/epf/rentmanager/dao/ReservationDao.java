@@ -21,8 +21,8 @@ public class ReservationDao {
 	private static ReservationDao instance = null;
 	private ReservationDao() {}
 
-	private final VehicleDao vehicleDao = VehicleDao.getInstance();
-	private final ClientDao clientDao = ClientDao.getInstance();
+	private VehicleDao vehicleDao;
+	private ClientDao clientDao;
 	public static ReservationDao getInstance() {
 		if(instance == null) {
 			instance = new ReservationDao();

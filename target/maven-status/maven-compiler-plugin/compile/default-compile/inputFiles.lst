@@ -2,6 +2,7 @@
 /Users/hugovanheerden/Desktop/ecole/rentmanager-hvanheer/rentmanager/src/main/java/com/epf/rentmanager/model/Vehicule.java
 /Users/hugovanheerden/Desktop/ecole/rentmanager-hvanheer/rentmanager/src/main/java/com/epf/rentmanager/service/ClientService.java
 /Users/hugovanheerden/Desktop/ecole/rentmanager-hvanheer/rentmanager/src/main/java/com/epf/rentmanager/service/ReservationService.java
+/Users/hugovanheerden/Desktop/ecole/rentmanager-hvanheer/rentmanager/src/main/java/com/epf/rentmanager/configuration/AppConfiguration.java
 /Users/hugovanheerden/Desktop/ecole/rentmanager-hvanheer/rentmanager/src/main/java/com/epf/rentmanager/ui/cli/main.java
 /Users/hugovanheerden/Desktop/ecole/rentmanager-hvanheer/rentmanager/src/main/java/com/epf/rentmanager/persistence/FillDatabase.java
 /Users/hugovanheerden/Desktop/ecole/rentmanager-hvanheer/rentmanager/src/main/java/com/epf/rentmanager/exception/DaoException.java

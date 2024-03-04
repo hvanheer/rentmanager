@@ -11,7 +11,9 @@ import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.model.Vehicule;
 import com.epf.rentmanager.dao.ClientDao;
 import com.epf.rentmanager.dao.VehicleDao;
+import org.springframework.stereotype.Service;
 
+@Service
 public class VehicleService {
 
 	private VehicleDao vehicleDao;
@@ -19,17 +21,17 @@ public class VehicleService {
 
 	private final ReservationDao reservationDao = ReservationDao.getInstance();
 	
-	private VehicleService() {
-		this.vehicleDao = VehicleDao.getInstance();
+	private VehicleService(VehicleDao vehicleDao) {
+		this.vehicleDao = vehicleDao;
 	}
 	
-	public static VehicleService getInstance() {
+	/*public static VehicleService getInstance() {
 		if (instance == null) {
 			instance = new VehicleService();
 		}
 		
 		return instance;
-	}
+	}*/
 	
 	
 	public int create(Vehicule vehicle) throws ServiceException {
