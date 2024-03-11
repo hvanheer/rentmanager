@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private VehicleService vehicleService;
+	private ClientService clientService;
 	private final ReservationService reservationService = ReservationService.getInstance();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
