@@ -1,9 +1,8 @@
-
-package com.epf.rentmanager.servlet;
-
+package com.epf.rentmanager.servlet.clients;
 
 import com.epf.rentmanager.configuration.AppConfiguration;
 import com.epf.rentmanager.exception.ServiceException;
+import com.epf.rentmanager.model.Client;
 import com.epf.rentmanager.model.Vehicule;
 import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.VehicleService;
@@ -20,13 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/cars/create")
-public class VehicleCreateServlet extends HttpServlet {
+@WebServlet("/users")
+public class ClientListServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     @Autowired
-    private VehicleService vehicleService;
-
+    private ClientService clientService;
     @Override
     public void init() throws ServletException {
         super.init();
@@ -34,22 +32,15 @@ public class VehicleCreateServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/create.jsp").forward(request, response);
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String constructeur = request.getParameter("manufacturer");
-        String modele = request.getParameter("modele");
-        String nbPlacesString = request.getParameter("seats");
-        int nbPlaces = Integer.parseInt(nbPlacesString);
-        Vehicule createdVehicule = new Vehicule(constructeur, nbPlaces, 0, modele);
+        List<Client> clientList;
         try {
-            vehicleService.create(createdVehicule);
+            clientList = clientService.findAll();
         } catch (ServiceException e) {
             throw new RuntimeException(e);
         }
-        response.sendRedirect("/rentmanager/cars");
+        request.setAttribute("clients", clientList);
+
+        this.getServletContext().getRequestDispatcher("/WEB-INF/views/users/list.jsp").forward(request, response);
     }
 
 }

@@ -1,11 +1,11 @@
-package com.epf.rentmanager.servlet;
+
+package com.epf.rentmanager.servlet.vehicles;
+
 
 import com.epf.rentmanager.configuration.AppConfiguration;
 import com.epf.rentmanager.exception.ServiceException;
-import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.model.Vehicule;
 import com.epf.rentmanager.service.ClientService;
-import com.epf.rentmanager.service.ReservationService;
 import com.epf.rentmanager.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -19,11 +19,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-@WebServlet("/rents")
-public class ReservationListServlet extends HttpServlet {
+
+@WebServlet("/cars/create")
+public class VehicleCreateServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
     @Autowired
-    private ReservationService reservationService;
+    private VehicleService vehicleService;
 
     @Override
     public void init() throws ServletException {
@@ -32,14 +34,22 @@ public class ReservationListServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Reservation> reservationList;
+        this.getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/create.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String constructeur = request.getParameter("manufacturer");
+        String modele = request.getParameter("modele");
+        String nbPlacesString = request.getParameter("seats");
+        int nbPlaces = Integer.parseInt(nbPlacesString);
+        Vehicule createdVehicule = new Vehicule(constructeur, nbPlaces, 0, modele);
         try {
-            reservationList = reservationService.findAll();
+            vehicleService.create(createdVehicule);
         } catch (ServiceException e) {
             throw new RuntimeException(e);
         }
-        request.setAttribute("reservations", reservationList);
-
-        this.getServletContext().getRequestDispatcher("/WEB-INF/views/rents/list.jsp").forward(request, response);
+        response.sendRedirect("/rentmanager/cars");
     }
+
 }
