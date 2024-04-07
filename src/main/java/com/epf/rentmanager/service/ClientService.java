@@ -94,5 +94,13 @@ public class ClientService {
 			throw new ServiceException();
 		}
 	}
+
+	public void update(Client client) throws ServiceException {
+		try {
+			clientDao.update(client);
+		} catch (DaoException e) {
+			throw new ServiceException();
+		}
+	}
 	
 }

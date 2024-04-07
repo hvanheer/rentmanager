@@ -1,6 +1,7 @@
 package com.epf.rentmanager.service;
 
 import com.epf.rentmanager.dao.ReservationDao;
+import com.epf.rentmanager.dto.ReservationClientVehicleDto;
 import com.epf.rentmanager.exception.DaoException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Reservation;
@@ -18,13 +19,6 @@ public class ReservationService {
         this.reservationDao = reservationDao;
     }
 
-    /*public static ReservationService getInstance() {
-        if (instance == null) {
-            instance = new ReservationService();
-        }
-
-        return instance;
-    }*/
 
     public int create(Reservation reservation) throws ServiceException {
         // TODO: créer une reservation
@@ -68,6 +62,14 @@ public class ReservationService {
             return reservationDao.findAll();
         } catch (DaoException e) {
             e.printStackTrace();
+            throw new ServiceException();
+        }
+    }
+
+    public ReservationClientVehicleDto findById(long id) throws ServiceException {
+        try {
+            return reservationDao.findById(id);
+        } catch (DaoException e) {
             throw new ServiceException();
         }
     }

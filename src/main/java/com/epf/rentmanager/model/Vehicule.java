@@ -4,6 +4,10 @@ import java.util.Date;
 
 public class Vehicule {
 
+    public Vehicule(int vehicule_id) {
+        this.vehicule_id = vehicule_id;
+    }
+
     public int getVehicule_id() {
         return vehicule_id;
     }

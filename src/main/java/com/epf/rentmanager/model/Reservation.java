@@ -5,6 +5,10 @@ import java.time.LocalDate;
 
 public class Reservation {
 
+    public Reservation(int reservation_id) {
+        this.reservation_id = reservation_id;
+    }
+
     public int getClient_id() {
         return client_id;
     }

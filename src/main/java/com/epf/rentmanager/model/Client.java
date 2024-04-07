@@ -7,6 +7,11 @@ public class Client {
     private String prenom;
     private LocalDate naissance;
     private int client_id;
+
+    public Client(int client_id) {
+        this.client_id = client_id;
+    }
+
     public int getClient_id() {
         return client_id;
     }

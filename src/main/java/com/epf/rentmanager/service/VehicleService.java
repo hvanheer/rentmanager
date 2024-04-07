@@ -93,5 +93,13 @@ public class VehicleService {
 			throw new ServiceException();
 		}
 	}
+
+	public void update(Vehicule vehicle) throws ServiceException {
+		try {
+			vehicleDao.update(vehicle);
+		} catch (DaoException e) {
+			throw new ServiceException();
+		}
+	}
 	
 }
