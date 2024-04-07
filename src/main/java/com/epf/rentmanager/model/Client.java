@@ -7,7 +7,6 @@ public class Client {
     private String prenom;
     private LocalDate naissance;
     private int client_id;
-
     public int getClient_id() {
         return client_id;
     }

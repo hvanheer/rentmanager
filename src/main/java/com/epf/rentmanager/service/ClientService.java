@@ -10,15 +10,17 @@ import com.epf.rentmanager.exception.DaoException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Client;
 import com.epf.rentmanager.model.Reservation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ClientService {
 
 	private ClientDao clientDao;
-	public static ClientService instance;
 
-	private final ReservationDao reservationDao = ReservationDao.getInstance();
+	@Autowired
+	private ReservationDao reservationDao;
+
 	
 	private ClientService(ClientDao clientDao) {
 		this.clientDao = clientDao;

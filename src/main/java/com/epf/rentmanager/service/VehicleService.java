@@ -11,15 +11,18 @@ import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.model.Vehicule;
 import com.epf.rentmanager.dao.ClientDao;
 import com.epf.rentmanager.dao.VehicleDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class VehicleService {
 
 	private VehicleDao vehicleDao;
-	public static VehicleService instance;
 
-	private final ReservationDao reservationDao = ReservationDao.getInstance();
+	@Autowired
+	private ReservationDao reservationDao;
+
+	//private ReservationService(ReservationDao reservationDao) {this.reservationDao = reservationDao;}
 	
 	private VehicleService(VehicleDao vehicleDao) {
 		this.vehicleDao = vehicleDao;

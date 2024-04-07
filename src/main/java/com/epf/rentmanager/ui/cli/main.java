@@ -25,10 +25,7 @@ public class main {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class);
         ClientService clientService = context.getBean(ClientService.class);
         VehicleService vehicleService = context.getBean(VehicleService.class);
-
-
-        ReservationService  reservationService = ReservationService.getInstance();
-
+        ReservationService reservationService = context.getBean(ReservationService.class);
 
         // Create a Scanner object to read input from the console
         Scanner scanner = new Scanner(System.in);

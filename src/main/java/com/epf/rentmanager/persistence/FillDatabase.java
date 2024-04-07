@@ -52,7 +52,11 @@ public class FillDatabase {
             stmt.execute("INSERT INTO Client(nom, prenom, email, naissance) VALUES('Morin', 'Sabrina', 'sabrina.morin@email.com', '1988-01-22')");
             stmt.execute("INSERT INTO Client(nom, prenom, email, naissance) VALUES('Afleck', 'Steeve', 'steeve.afleck@email.com', '1988-01-22')");
             stmt.execute("INSERT INTO Client(nom, prenom, email, naissance) VALUES('Rousseau', 'Jacques', 'jacques.rousseau@email.com', '1988-01-22')");
-                    
+
+            //stmt.execute("INSERT INTO Reservation(client_id, vehicule_id, debut, fin) VALUES(1, 1, '2019-10-01', '2019-10-03')");
+            //stmt.execute("INSERT INTO Reservation(client_id, vehicule_id, debut, fin) VALUES(2, 2, '2020-08-06', '2020-08-10')");
+
+
             connection.commit();
             System.out.println("Success!");
         } catch (SQLException e) {

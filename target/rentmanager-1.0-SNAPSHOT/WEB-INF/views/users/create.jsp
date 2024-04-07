@@ -25,7 +25,7 @@
                     <!-- Horizontal Form -->
                     <div class="box">
                         <!-- form start -->
-                        <form class="form-horizontal" method="post" action="/users/create">
+                        <form class="form-horizontal" method="post">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="last_name" class="col-sm-2 control-label">Nom</label>
@@ -39,6 +39,13 @@
 
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Prenom">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date_naissance" class="col-sm-2 control-label">Date de Naissance</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" id="date_naissance" name="date_naissance" placeholder="date_naissance">
                                     </div>
                                 </div>
                                 <div class="form-group">
